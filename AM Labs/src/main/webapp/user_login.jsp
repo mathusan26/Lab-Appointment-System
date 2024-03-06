@@ -18,7 +18,7 @@
 <!-- customs css for this page -->
 <style type="text/css">
 .my-card {
-	box-shadow: 0px 0px 10px 1px maroon;
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,.125);
 	/*box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);*/
 }
 </style>
@@ -42,7 +42,7 @@
 					<div class="card-header text-center text-white my-bg-color">
 						<!-- <p class="fs-4 text-center mt-1"><i class="fa-solid fa-users"></i> <br>User Login</p> -->
 						<p class="fs-4 text-center text-white mt-2">
-							<i class="fa fa-group"></i> User Login
+							<i class="fa fa-group"></i> Patient Login
 						</p>
 					</div>
 					

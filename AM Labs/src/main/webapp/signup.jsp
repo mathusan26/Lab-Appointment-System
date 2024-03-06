@@ -20,7 +20,7 @@
 <!-- customs css for this page -->
 <style type="text/css">
 .my-card {
-	box-shadow: 0px 0px 10px 1px maroon;
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,.125);
 	/*box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);*/
 }
 </style>
@@ -40,7 +40,7 @@
 					<div class="card-header text-center text-white my-bg-color">
 						<!-- <p class="fs-4 text-center mt-1"><i class="fa-solid fa-users"></i> <br>User Login</p> -->
 						<p class="fs-4 text-center text-white mt-2">
-							<i class="fa fa-user-plus"></i> User Register
+							<i class="fa fa-user-plus"></i> Patient Register
 						</p>
 					</div>
 					<div class="card-body">
@@ -62,23 +62,51 @@
 
 						<!-- boostrap form -->
 						<form action="user_register" method="post">
-							<div class="mb-3">
-								<label class="form-label">Full Name</label> <input
-									name="fullName" type="text" placeholder="Enter full name"
+							<div class="mb-2">
+								<label class="form-label">Patient Name</label> <input
+									name="patient_name" type="text" placeholder="Enter full name"
 									class="form-control">
 
 							</div>
-							<div class="mb-3">
+							<div class="mb-2 row">
+								<div class="col-md-6">
+									<label class="form-label">Age</label> <input
+									name="age" type="text" placeholder="Enter age"
+									class="form-control">
+								</div>
+								<div class="col-md-6">
+									<label class="form-label">Gender</label> <input
+									name="gender" type="text" placeholder="Enter geder"
+									class="form-control">
+								</div>
+							</div>
+							<div class="mb-2">
+								<label class="form-label">Phone Number</label> <input
+									name="phone" type="text" placeholder="Enter phone number"
+									class="form-control">
+							</div>
+							<div class="mb-2">
 								<label class="form-label">Email address</label> <input
 									name="email" type="email" placeholder="Enter Email"
 									class="form-control">
 								<div id="emailHelp" class="form-text">We'll never share
 									your email with anyone else.</div>
 							</div>
-							<div class="mb-3">
-								<label class="form-label">Password</label> <input
-									name="password" type="password" placeholder="Enter password"
+							<div class="mb-2">
+								<label class="form-label">Address</label> <textarea
+									name="address" class="form-control"></textarea>
+							</div>
+							<div class="mb-2 row">
+								<div class="col-md-6">
+									<label class="form-label">Password</label> <input
+									name="password" type="password" placeholder="Password"
 									class="form-control">
+								</div>
+								<div class="col-md-6">
+									<label class="form-label">Confirm Password</label> <input
+									name="confirm_password" type="password" placeholder="Confirm Password"
+									class="form-control">
+								</div>
 							</div>
 
 							<button type="submit" class="btn my-bg-color text-white col-md-12">Register</button>

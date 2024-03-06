@@ -7,9 +7,9 @@
 <!-- <i class="fa-sharp fa-solid fa-hospital"></i> -->
 
 <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-danger"> -->
-<nav class="navbar navbar-expand-lg navbar-dark"style="background-color: #4568dc;">
+<nav class="navbar navbar-expand-lg navbar-dark"style="background-color: #6a994e;">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="index.jsp"><i class="fa-sharp fa-solid fa-hospital"></i> Doctor Patient Portal</a>
+		<a class="navbar-brand" href="index.jsp"><i class="fa-solid fa-microscope"></i> A.M Medi Labs</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -25,7 +25,7 @@
 
 				<c:if test="${empty userObj}">
 
-					<li class="nav-item"><a class="nav-link active"
+					<!-- <li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="admin_login.jsp"><i
 							class="fa-solid fa-right-to-bracket"></i> ADMIN</a></li>
 					<li class="nav-item"><a class="nav-link active"
@@ -34,7 +34,9 @@
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="user_appointment.jsp"><i class="fa fa-book fa-1x"></i> APPOINTMENT</a></li>
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="user_login.jsp"><i class="fas fa-sign-in-alt"></i> USER</a></li>
+						aria-current="page" href="user_login.jsp"><i class="fas fa-sign-in-alt"></i> USER</a></li>-->
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="user_login.jsp"><i class="fa-solid fa-user"></i> Sign In</a></li>
 
 				</c:if>
 
@@ -47,10 +49,10 @@
 
 				<c:if test="${not empty userObj }">
 					<!-- means user is log in -->
-					<li class="nav-item"><a class="nav-link active"
+					<!--  <li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="user_appointment.jsp"><i class="fa fa-book fa-1x"></i> APPOINTMENT</a></li>
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="view_appointment.jsp"><i class="fa fa-calendar-check-o"></i> VIEW APPOINTMENT</a></li>
+						aria-current="page" href="view_appointment.jsp"><i class="fa fa-calendar-check-o"></i> VIEW APPOINTMENT</a></li>-->
 
 
 
@@ -63,6 +65,7 @@
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li><a class="dropdown-item" href="change_password.jsp">Change Password</a></li>
+							<li><a class="dropdown-item" href="view_appointment.jsp">My Appointments</a></li>
 							<li><a class="dropdown-item" href="userLogout">Logout</a></li>
 
 						</ul>

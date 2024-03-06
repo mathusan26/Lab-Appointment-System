@@ -1,9 +1,7 @@
 <%@page import="com.hms.entity.Doctor"%>
-<%@page import="com.hms.entity.Test"%>
 <%@page import="java.util.List"%>
 <%@page import="com.hms.db.DBConnection"%>
 <%@page import="com.hms.dao.DoctorDAO"%>
-<%@page import="com.hms.dao.TestDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -26,7 +24,7 @@
 <!-- customs css for this page -->
 <style type="text/css">
 .my-card {
-	box-shadow: 0px 0px 10px 1px maroon;
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,.125);
 	/*box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);*/
 }
 
@@ -68,17 +66,29 @@
 		<div class="row">
 			
 			<!-- col-1 -->
-			<div class="col-md-6 p-5">
+			<div class="col-md-4 p-5">
 				<!-- for Background image -->
 				<!-- <img alt="" src="img/picDoc.jpg" width="500px" height="400px"> -->
 				<img alt="" src="img/doc3.jpg" width="370" height="">
 			</div>
 			
 			<!-- col-2 -->
-			<div class="col-md-6">
+			<div class="col-md-8">
+				<c:if test="${not empty userObj}">
+
+				<div class="col-md-12 d-flex pb-3 justify-content-end">
+					<!-- <div>
+						<a aria-current="page" href="user_appointment.jsp" class="btn btn-success active"><i class="fa fa-book fa-1x"></i> ADD APPOINTMENT</a>
+					</div> -->
+					<div>
+						<a aria-current="page" href="view_appointment.jsp" class="btn btn-success active"><i class="fa fa-calendar-check-o"></i> VIEW APPOINTMENT</a>
+					</div>
+				</div>
+
+				</c:if>
 				<div class="card my-card">
 					<div class="card-body">
-						<p class="text-center fs-3">User Appointment</p>
+						<p class="text-center fs-3">Test Appointment</p>
 
 						<!-- message print -->
 						<!-- for success msg -->
@@ -101,7 +111,7 @@
 							<!-- take user Id in hidden field -->
 							<input type="hidden" name="userId" value="${ userObj.id }">
 							
-							<div class="col-md-6">
+							<!-- <div class="col-md-6">
 								<label class="form-label">Full Name</label> <input required="required"
 									name="fullName" type="text" placeholder="Enter full name"
 									class="form-control">
@@ -116,7 +126,7 @@
 									<option value="male">Male</option>
 									<option value="female">Female</option>
 								</select>
-							</div>
+							</div> -->
 
 							<div class="col-md-6">
 								<label class="form-label">Age</label> <input name="age"
@@ -166,28 +176,6 @@
 								</select>
 							</div>
 
-								<div class="col-md-6">
-								<label class="form-label">Test</label> <select
-								 required="required" class="form-control" name="TestNameSelect">
-									<option selected="selected" disabled="disabled">---Select---</option>
-									
-									<%
-									TestDAO testDAO = new TestDAO(DBConnection.getConn());
-									List<Test> listOfTest = testDAO.getAllTest();
-									for(Test dt : listOfTest)
-									
-									
-									{%>
-									<!-- actually we take id of doctor from doctor table -->
-									<option value="<%= dt.getId() %>"> <%= dt.getTestName()%>  </option>
-									
-									<%
-									}
-									%>
-									
-									<!-- <option>Doctor name</option> -->
-								</select>
-							</div>
 
 							<!-- below are visible to right side part of form-->
 

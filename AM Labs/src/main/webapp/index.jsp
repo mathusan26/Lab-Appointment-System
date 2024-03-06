@@ -15,6 +15,12 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
+<meta name="description" content="laboratory appointment management">
+<meta name="keywords" content="laboratory appointment, doctor appointment">
+<meta name="author" content="Mathusan">
+<title>A.M Medi Labs</title>
+
+<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
 
 <title>Home Page | Doctor Patient Portal</title>
 <%@include file="component/allcss.jsp"%>
@@ -23,7 +29,7 @@
 <!-- customs css for this page -->
 <style type="text/css">
 .my-card {
-	box-shadow: 0px 0px 10px 1px maroon;
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,.125);
 	/*box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);*/
 }
 </style>
@@ -57,30 +63,21 @@
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="img/doctor_2.jpg" class="d-block w-100" alt="..."
+				<img src="img/test-1.jpg" class="d-block w-100" alt="..."
 					height="500px">
 			</div>
 			<div class="carousel-item">
-				<img src="img/doctor_1.jpg" class="d-block w-100" alt="..."
+				<img src="img/test-2.jpg" class="d-block w-100" alt="..."
 					height="500px">
 			</div>
 			<div class="carousel-item">
-				<img src="img/hospital4.jpg" class="d-block w-100" alt="..."
+				<img src="img/test-3.jpg" class="d-block w-100" alt="..."
 					height="500px">
 			</div>
 			<div class="carousel-item">
-				<img src="img/doctor_3.jpg" class="d-block w-100" alt="..."
+				<img src="img/test-4.jpg" class="d-block w-100" alt="..."
 					height="500px">
 			</div>
-			<!-- <div class="carousel-item">
-				<img src="img/hospital1.jpg" class="d-block w-100" alt="...">
-			</div>
-			<div class="carousel-item">
-				<img src="img/hospital2.jpg" class="d-block w-100" alt="...">
-			</div>
-			<div class="carousel-item">
-				<img src="img/hospital3.jpg" class="d-block w-100" alt="...">
-			</div> -->
 
 		</div>
 		<button class="carousel-control-prev" type="button"
@@ -101,20 +98,21 @@
 
 	<!-- First Div Container -->
 	<div class="container p-3">
-		<p class="text-center mt-2 mb-5 fs-2 myP-color">Some key Features of our
-			Doctor Patient Portal</p>
+		<p class="text-start mt-2 mb-0 fs-2 primary-color">Popular Tests</p>
+		<p class="text-start mt-2 mb-2 fs-5 secondary-color">Discover Our Popular Lab Tests, Unlock Key Health Insights with Trusted Diagnostic Services.</p>
 		<div class="row">
 			<!-- 1st col -->
-			<div class="col-md-8 p-5">
+			<div class="col-md-8 p-1 pt-5">
 
 				<div class="row">
 					<div class="col-md-6">
 						<div class="card my-card">
 							<div class="card-body">
-								<p class="fs-5 myP-color">11000+ Healing Hands</p>
-								<p>Largest network of the world’s finest and brightest
-									medical experts who provide compassionate care using
-									outstanding expertise.</p>
+								<p class="fs-5 myP-color">Fasting Blood Sugar Test</p>
+								<p>This measures your blood sugar after an overnight fast (not eating). 
+								A fasting blood sugar level of 99 mg/dL or lower is normal, 100 to 125 
+								mg/dL indicates you have prediabetes, and 126 mg/dL or higher indicates 
+								you have diabetes.</p>
 							</div>
 						</div>
 					</div>
@@ -122,9 +120,11 @@
 					<div class="col-md-6">
 						<div class="card my-card">
 							<div class="card-body">
-								<p class="fs-5 myP-color">Most Advance Healthcare Technology</p>
-								<p>E-Hospitals has been the pioneer in bringing
-									ground-breaking health care technologies to Bangladesh.</p>
+								<p class="fs-5 myP-color">Full Blood Count Test</p>
+								<p>A full blood count (FBC) is a common blood test that can provide 
+								information about a range of conditions. A full blood count looks at the 
+								different cells in your blood, including red blood cells, white blood 
+								cells and platelets.</p>
 							</div>
 						</div>
 					</div>
@@ -132,10 +132,11 @@
 					<div class="col-md-6 mt-2">
 						<div class="card my-card">
 							<div class="card-body">
-								<p class="fs-5 myP-color">Best Clinical Outcomes</p>
-								<p>Leveraging its vast medical expertise & technological
-									advantage, E-Hospitals has consistently delivered best in class
-									clinical outcomes.</p>
+								<p class="fs-5 myP-color">Microalbumin (Urine) Test</p>
+								<p>This test looks for minuscule amounts of albumin in your urine.Albumin 
+								is a protein needed for tissue growth and healing. It can leak into your 
+								urine when your kidneys aren't working as they should. The test can find 
+								out if diabetes has damaged your kidneys.</p>
 							</div>
 						</div>
 					</div>
@@ -143,10 +144,12 @@
 					<div class="col-md-6 mt-2">
 						<div class="card my-card">
 							<div class="card-body">
-								<p class="fs-5 myP-color">500+ Pharmacies</p>
-								<p>E-Hospital Pharmacy is our first, largest and most
-									trusted branded pharmacy network, with over 50s0 plus outlets
-									covering the entire nation</p>
+								<p class="fs-5 myP-color">Dengue Antigen Test</p>
+								<p>The dengue antigen test also called the dengue NS1, 
+								is done to detect the present of infection by the dengue virus. An 
+								antigen is protein which is present on the surface of the virus, 
+								and this test will help confirm the presence of an infection by 
+								detecting this protein.</p>
 							</div>
 						</div>
 					</div>
@@ -158,8 +161,8 @@
 
 			<!-- 2nd col -->
 			
-				<div class="col-md-4 mt-2 mys-card">
-					<img class="mt-3" alt="" src="img/doctor_1.jpg" height="440px"
+				<div class="col-md-4 p-1 pt-5">
+					<img class="" alt="" src="img/micro-scope.jpg" height="440px"
 						width="470px">
 				</div>
 			
@@ -169,37 +172,67 @@
 	</div>
 	<!-- End of First Div Container -->
 
-	<hr>
+	
+	<div class="container-fluid how-it-work">
+		<p class="text-start mt-2 mb-0 fs-2 white-text">How It Works</p>
+		<p class="text-start mt-2 mb-2 fs-5 white-text">Uncover the Seamless Process for Easy Navigation and Health Solutions.</p>
 
+		<div class="row justify-content-center">
+			<div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="600">
+				<div class="work-box">
+					<div class="work-icon">
+						<img src="img/icons/work-icon-07.svg" alt="Img">
+					</div>
+					<h4>1. Request your test kit</h4>
+					<p>Take the first step to better health – request your test kit. Simple, convenient, and tailored to empower your wellness journey.</p>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="700">
+				<div class="work-box bg-green">
+					<div class="work-icon">
+						<img src="img/icons/work-icon-06.svg" alt="Img">
+					</div>
+					<h4>2. Collect Your Sample</h4>
+					<p> Collect your sample at your convenience with our easy-to-follow instructions. Streamlined and hassle-free, empowering your health from the comfort of home</p>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="800">
+				<div class="work-box bg-pink">
+					<div class="work-icon">
+						<img src="img/icons/work-icon-05.svg" alt="Img">
+					</div>
+					<h4>3. Receive results in days</h4>
+					<p>Expect your test results within days, ensuring a prompt and efficient turnaround. Stay informed and take control of your health journey</p>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Second Div Container -->
 
 	<div class="container p-2">
-		<p class="text-center fs-2 myP-color">Our Team</p>
+		<p class="text-center fs-2 myP-color">Our Technicians</p>
 		<div class="row">
 			<div class="col-md-3">
 				<div class="card my-card">
 					<div class="card-body text-center">
-						<img alt="" src="img/doc1.jpg" height="300px" width="230px">
-						<p class="fw-bold fs-5">Dr. John</p>
-						<p class="fs-7">(CEO & Chairman)</p>
+						<img alt="" src="img/tech/technician-f.png" height="300px" width="230px">
+						<p class="fw-bold fs-5">Mrs. Maria</p>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="card my-card">
 					<div class="card-body text-center">
-						<img alt="" src="img/doc2.jpg" height="300px" width="230px">
-						<p class="fw-bold fs-5">Dr. Brad</p>
-						<p class="fs-7">(Chief Doctor)</p>
+						<img alt="" src="img/tech/technician-m.png" height="300px" width="230px">
+						<p class="fw-bold fs-5">Mr. John</p>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="card my-card">
 					<div class="card-body text-center">
-						<img alt="" src="img/doc3.jpg" height="300px" width="230px">
-						<p class="fw-bold fs-5">Dr. Jennifer</p>
-						<p class="fs-7">(Chief Doctor)</p>
+						<img alt="" src="img/tech/technician-f.png" height="300px" width="230px">
+						<p class="fw-bold fs-5">Miss. Jennifer</p>
 					</div>
 				</div>
 			</div>
@@ -207,9 +240,8 @@
 			<div class="col-md-3">
 				<div class="card my-card">
 					<div class="card-body text-center">
-						<img alt="" src="img/doc4.jpg" height="300px" width="230px">
-						<p class="fw-bold fs-5">Dr. Maria</p>
-						<p class="fs-7">(Dean)</p>
+						<img alt="" src="img/tech/technician-m.png" height="300px" width="230px">
+						<p class="fw-bold fs-5">Mr. Brad</p>
 					</div>
 				</div>
 			</div>

@@ -33,7 +33,7 @@
 <!-- customs css for this page -->
 <style type="text/css">
 .my-card {
-	box-shadow: 0px 0px 10px 1px maroon;
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,.125);
 	/*box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);*/
 }
 
@@ -84,6 +84,14 @@
 
 			<!-- col-2 -->
 			<div class="col-md-9">
+				<div class="col-md-12 d-flex pb-3 justify-content-end">
+					<div>
+						<a aria-current="page" href="user_appointment.jsp" class="btn btn-success active"><i class="fa fa-book fa-1x"></i> ADD APPOINTMENT</a>
+					</div>
+					<!--<div>
+						<a aria-current="page" href="view_appointment.jsp" class="btn btn-success active"><i class="fa fa-calendar-check-o"></i> VIEW APPOINTMENT</a>
+					</div> -->
+				</div>
 				<div class="card my-card">
 					<div class="card-body">
 						<p class="fw-bold text-center myP-color fs-4">Appointment

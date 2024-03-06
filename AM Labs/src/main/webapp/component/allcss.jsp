@@ -33,12 +33,59 @@ body {
 }
 
 .my-bg-color {
-	background-color: #4568dc;
+	background-color: #6a994e;
 	
 }
 
 .myP-color{
-	color: #4568dc;
+	color: #6a994e;
+}
+
+.primary-color {
+	color: #6a994e;
+}
+
+.secondary-color {
+	color: #547A3E;
+}
+.white-text {
+	color : #ffffff;
+}
+
+.how-it-work {
+	background: #658751;
+	.work-box {
+	display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    border: 1px solid #e5e5e5;
+    margin: 0 0 24px;
+    padding: 24px;
+    border-radius: 10px;
+    text-align: center;
+    flex-direction: column;
+    background: #fff;
+    width: 100%;
+    transition: .5s all;
+    
+    .work-icon {
+    	display: flex;
+    	display: -webkit-flex;
+    	align-items: center;
+    	-webkit-align-items: center;
+    	justify-content: center;
+    	-webkit-justify-content: center;
+	    width: 100px;
+	    height: 100px;
+	    border-radius: 50%;
+	    background: #dbe8ff;
+	    margin-bottom: 20px;
+	}
+}
+	
 }
 
 
