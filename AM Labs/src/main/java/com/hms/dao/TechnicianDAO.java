@@ -26,11 +26,11 @@ public class TechnicianDAO {
 		try {
 			
 			
-			String sql = "insert into technician (technician_name,testField, address, phone, age) values(?,?,?,?,?)";
+			String sql = "insert into technician (technician_name,testFieldId, address, phone, age) values(?,?,?,?,?)";
 			PreparedStatement pstmt = this.conn.prepareStatement(sql);
 			
 			pstmt.setString(1, tech.getTechnicianName());
-			pstmt.setString(2, tech.getTestField());
+			pstmt.setInt(2, tech.getTestFieldId());
 			pstmt.setString(3, tech.getAddress());
 			pstmt.setInt(4, tech.getPhone());
 			pstmt.setInt(5, tech.getAge());
@@ -69,7 +69,7 @@ public class TechnicianDAO {
 				technician = new Technician();
 				technician.setId(resultSet.getInt("technicianId"));
 				technician.setTechnicianName(resultSet.getString("technician_name"));
-				technician.setTestField(resultSet.getString("testField"));
+				technician.setTestFieldId(resultSet.getInt("testFieldId"));
 				technician.setAddress(resultSet.getString("address"));
 				technician.setAge(resultSet.getInt("age"));
 				technician.setPhone(resultSet.getInt("phone"));
@@ -106,7 +106,7 @@ public class TechnicianDAO {
 
 				technician.setId(resultSet.getInt("technicianId"));
 				technician.setTechnicianName(resultSet.getString("technician_name"));
-				technician.setTestField(resultSet.getString("testField"));
+				technician.setTestFieldId(resultSet.getInt("testFieldId"));
 				technician.setAddress(resultSet.getString("address"));
 				technician.setAge(resultSet.getInt("age"));
 				technician.setPhone(resultSet.getInt("phone"));
@@ -128,14 +128,14 @@ public class TechnicianDAO {
 
 		try {
 
-				String sql = "update technician set technician_name =? ,testField=?, address=?, phone=?, age=? where technicianId=?";
+				String sql = "update technician set technician_name =? ,testFieldId=?, address=?, phone=?, age=? where technicianId=?";
 
 				PreparedStatement pstmt = this.conn.prepareStatement(sql);
 				pstmt.setString(1, technician.getTechnicianName());
-				pstmt.setString(2, technician.getTestField());
+				pstmt.setInt(2, technician.getTestFieldId());
 				pstmt.setString(3, technician.getAddress());
-				pstmt.setInt(4, technician.getAge());
-				pstmt.setInt(5, technician.getPhone());
+				pstmt.setInt(4, technician.getPhone());
+				pstmt.setInt(5, technician.getAge());
 					
 				// need to set id also for update
 				pstmt.setInt(6, technician.getId());

@@ -4,7 +4,7 @@ public class Technician {
 	
 	private int technicianId;
 	private String technicianName;
-	private String testField;
+	private int testFieldId;
 	private int age;
 	private String address;
 	private int phone;
@@ -24,21 +24,21 @@ public class Technician {
 		
 		this.technicianName = technicianName;
 	}
-	public Technician( String technicianName,String TestField,String address,int phone,int age) {
+	public Technician( String technicianName,int testFieldId,String address,int phone,int age) {
 		super();
 		
 		this.technicianName = technicianName;
-		this.testField =TestField;
+		this.testFieldId =testFieldId;
 		this.address = address;
 		this.phone = phone;
 		this.age=age;
 	}
 	
-	public Technician( int technicianId,String technicianName,String TestField,String address,int phone,int age) {
+	public Technician( int technicianId,String technicianName,int testFieldId,String address,int phone,int age) {
 		super();
 		this.technicianId =technicianId;
 		this.technicianName = technicianName;
-		this.testField =TestField;
+		this.testFieldId =testFieldId;
 		this.address = address;
 		this.phone = phone;
 		this.age=age;
@@ -59,12 +59,12 @@ public class Technician {
 	public void setTechnicianName(String technicianName) {
 		this.technicianName = technicianName;
 	}
-	public String getTestField() {
-		return testField;
+	public int getTestFieldId() {
+		return testFieldId;
 	}
 
-	public void setTestField(String testField) {
-		this.testField = testField;
+	public void setTestFieldId(int testFieldId) {
+		this.testFieldId = testFieldId;
 	}
 	
 	public String getAddress() {

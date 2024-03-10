@@ -23,7 +23,7 @@ public class UpdateTechnicianServlet extends HttpServlet{
 				try {
 
 					String technicianName = req.getParameter("technicianName");
-					String testField = req.getParameter("testField");
+					int testFieldId = Integer.parseInt(req.getParameter("testField"));
 					String address = req.getParameter("address");
 					int phone = Integer.parseInt(req.getParameter("phone"));
 					int age = Integer.parseInt(req.getParameter("age"));
@@ -32,7 +32,7 @@ public class UpdateTechnicianServlet extends HttpServlet{
 					int id = Integer.parseInt(req.getParameter("technicianId"));
 
 
-					Technician tech = new Technician(id,technicianName, testField, address, phone, age);
+					Technician tech = new Technician(id,technicianName, testFieldId, address, phone, age);
 					
 
 					TechnicianDAO techDAO = new TechnicianDAO(DBConnection.getConn());

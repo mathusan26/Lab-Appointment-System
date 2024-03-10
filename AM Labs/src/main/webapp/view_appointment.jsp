@@ -146,8 +146,8 @@
 								TestResultDAO resultDAO = new TestResultDAO(DBConnection.getConn());
 
 								List<Appointment> list = appDAO.getAllAppointmentByLoginUser(user.getId());
+								int index = 1;
 								for (Appointment apptList : list) {
-									int index = 1;
 									Test test =  testDAO.getTestById(apptList.getTest());
 									Status status = statusDAO.getStatusById(apptList.getStatus());
 									TestResult result = resultDAO.getResultByAppointmentId(apptList.getId());

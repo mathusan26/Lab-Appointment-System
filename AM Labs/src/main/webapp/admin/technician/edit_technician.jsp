@@ -1,5 +1,7 @@
 <%@page import="com.hms.entity.Technician"%>
 <%@page import="com.hms.dao.TechnicianDAO"%>
+<%@page import="com.hms.dao.TestDAO"%>
+<%@page import="com.hms.entity.Test"%>
 <%@page import="java.util.List"%>
 <%@page import="com.hms.db.DBConnection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -77,10 +79,23 @@
 
 							</div>
 							<div class="mb-3">
-								<label class="form-label">Working Test Field</label> <input
-									name="testField" value="<%=tech.getTestField()%>" type="text" placeholder="Enter Working Test Field"
-									class="form-control">
-
+								<label class="form-label">Working Test Field</label> <select
+								 required="required" class="form-control" name="testField">
+									<option selected="selected" disabled="disabled">---Select---</option>
+									
+									<%
+									TestDAO testDAO = new TestDAO(DBConnection.getConn());
+									List<Test> listOfTest = testDAO.getAllTest();
+									for(Test t : listOfTest)
+									
+									{%>
+									<option <%= (tech.getTestFieldId()== t.getId()?"selected":"" )%> value="<%= t.getId() %>"> <%= t.getTestName()%> </option>
+									<%
+									}
+									%>
+									
+									<!-- <option>Doctor name</option> -->
+								</select>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Age</label> <input

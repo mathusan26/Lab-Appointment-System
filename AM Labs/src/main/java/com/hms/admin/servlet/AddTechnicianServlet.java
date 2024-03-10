@@ -21,12 +21,12 @@ public class AddTechnicianServlet extends HttpServlet{
 					try {
 
 						String technicianName = req.getParameter("technicianName");
-						String testField = req.getParameter("testField");
+						int testFieldId = Integer.parseInt(req.getParameter("testField"));
 						String address = req.getParameter("address");
 						int phone = Integer.parseInt(req.getParameter("phone"));
 						int age = Integer.parseInt(req.getParameter("age"));
 					
-						Technician tech = new Technician(technicianName, testField, address, phone, age);
+						Technician tech = new Technician(technicianName, testFieldId, address, phone, age);
 
 						TechnicianDAO techDAO = new TechnicianDAO(DBConnection.getConn());
 

@@ -1,5 +1,7 @@
 <%@page import="com.hms.entity.Technician"%>
 <%@page import="com.hms.dao.TechnicianDAO"%>
+<%@page import="com.hms.dao.TestDAO"%>
+<%@page import="com.hms.entity.Test"%>
 <%@page import="java.util.List"%>
 <%@page import="com.hms.db.DBConnection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -84,15 +86,17 @@
 							<tbody>
 
 								<%
+								TestDAO testDAO = new TestDAO(DBConnection.getConn());
 								TechnicianDAO techDAO = new TechnicianDAO(DBConnection.getConn());
 								List<Technician> listOfTech = techDAO.getAllTechnician();
 								int index = 1;
 								for (Technician techLst : listOfTech) {
+									Test test =  testDAO.getTestById(techLst.getTestFieldId());
 								%>
 								<tr>
 									<td scope="row"><%= index %></td>
 									<td><%=techLst.getTechnicianName()%></td>
-									<td><%=techLst.getTestField()%></td>
+									<td><%=test.getTestName()%></td>
 									<td><%=techLst.getAddress()%></td>
 									<td><%=techLst.getAge()%></td>
 									<td><%=techLst.getPhone()%></td>
