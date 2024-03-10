@@ -4,14 +4,15 @@ public class Patient_details {
 	
 	
 	private int patientId;
-	private String patient_name;
+	private String patientName;
 	private String dateOfBirth;
 	private String email;
-	private int phone;
+	private String phone;
 	private String gender;
 	private int age;
 	private String address;
 	private String password;
+	private String referenceNo;
 
 
 	
@@ -21,10 +22,10 @@ public class Patient_details {
 	}
 
 
-	public Patient_details(String patient_name, String dateOfBirth, String email, int phone, String gender,
+	public Patient_details(String patientName, String dateOfBirth, String email, String phone, String gender,
 			int age, String address,String password) {
 		super();
-		this.patient_name = patient_name;
+		this.patientName = patientName;
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
 		this.phone = phone;
@@ -39,11 +40,11 @@ public class Patient_details {
 	
 
 
-	public Patient_details(int patientId, String patient_name, String dateOfBirth, String email, int phone, String gender,
+	public Patient_details(int patientId, String patientName, String dateOfBirth, String email, String phone, String gender,
 			int age, String address,String password) {
 		super();
 		this.patientId = patientId;
-		this.patient_name = patient_name;
+		this.patientName = patientName;
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
 		this.phone = phone;
@@ -55,7 +56,13 @@ public class Patient_details {
 	}
 
 
-	
+	public Patient_details(String patientName, String email, String password) {
+		super();
+		this.patientName = patientName;
+		this.email = email;
+		this.password = password;
+	}
+
 
 
 	public int getId() {
@@ -69,12 +76,12 @@ public class Patient_details {
 
 
 	public String getPatientName() {
-		return patient_name;
+		return patientName;
 	}
 
 
-	public void setPatientName(String patient_name) {
-		this.patient_name = patient_name;
+	public void setPatientName(String patientName) {
+		this.patientName = patientName;
 	}
 
 
@@ -118,12 +125,12 @@ public class Patient_details {
 	}
 
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
@@ -144,7 +151,19 @@ public class Patient_details {
 	public String getPassword() {
 		return password;
 	}
+	
+	public String getPatientReferenceNo() {
+		return referenceNo;
+	}
 
 
+	public void setPatientReferenceNo(String referenceNo) {
+		this.referenceNo = referenceNo;
+	}
+
+	@Override
+	public String toString() {
+		return "Patient_details [patientId=" + patientId + ", patientName=" + patientName + ", email=" + email + ", password=" + password + "]";
+	}
 
 }

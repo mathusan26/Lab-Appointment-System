@@ -81,7 +81,7 @@
 							</div>
 
 							<button type="submit"
-								class="btn col-md-12 text-white my-bg-color">Submit</button>
+								class="btn col-md-12 text-white my-bg-color">Log In</button>
 						</form>
 						<br>Don't have an account? <a href="signup.jsp"
 							class="text-decoration-none">create one</a>

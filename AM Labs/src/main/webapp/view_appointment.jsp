@@ -1,10 +1,17 @@
 <%@page import="com.hms.entity.Doctor"%>
+<%@page import="com.hms.entity.Test"%>
+<%@page import="com.hms.entity.Status"%>
+<%@page import="com.hms.entity.TestResult"%>
 <%@page import="com.hms.dao.DoctorDAO"%>
-<%@page import="com.hms.entity.User"%>
+<%@page import="com.hms.dao.TestDAO"%>
+<%@page import="com.hms.entity.Patient_details"%>
+<%@page import="com.hms.pat.PatientDAO"%>
+<%@page import="com.hms.dao.StatusDAO"%>
 <%@page import="com.hms.entity.Appointment"%>
 <%@page import="java.util.List"%>
 <%@page import="com.hms.db.DBConnection"%>
 <%@page import="com.hms.dao.AppointmentDAO"%>
+<%@page import="com.hms.dao.TestResultDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -54,6 +61,13 @@
 
 </head>
 <body>
+	<% 
+		response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+		
+		response.setHeader("Pragma","no-cache");
+
+		response.setHeader("Expires", "0");
+	%>
 	<%@include file="component/navbar.jsp"%>
 
 	<!-- if not login then log in first -->
@@ -114,60 +128,64 @@
 						<table class="table table-striped">
 							<thead>
 								<tr class="my-bg-color text-white">
-									<!-- <th scope="col">Id</th> -->
-									<th scope="col">Full Name</th>
-									<th scope="col">Gender</th>
-									<th scope="col">Age</th>
+									<th scope="col">No</th>
 									<th scope="col">Appointment Date</th>
-									<!-- <th scope="col">Email</th> -->
-									<th scope="col">Phone</th>
-									<th scope="col">Diseases</th>
-									<th scope="col">Doctor Name</th>
-									<!-- <th scope="col">Address</th> -->
-									<!-- <th scope="col">User Id</th> -->
+									<th scope="col">Test</th>
+									<th scope="col">Doctor</th>
 									<th scope="col">Status</th>
+									<th scope="col">Result</th>
 								</tr>
 							</thead>
 							<tbody>
 								<%
-								User user = (User) session.getAttribute("userObj");
-								DoctorDAO dDAO = new DoctorDAO(DBConnection.getConn());
-
+								Patient_details user = (Patient_details) session.getAttribute("userObj");
+							
+								TestDAO testDAO = new TestDAO(DBConnection.getConn());
+								StatusDAO statusDAO = new StatusDAO(DBConnection.getConn());
 								AppointmentDAO appDAO = new AppointmentDAO(DBConnection.getConn());
+								TestResultDAO resultDAO = new TestResultDAO(DBConnection.getConn());
 
 								List<Appointment> list = appDAO.getAllAppointmentByLoginUser(user.getId());
 								for (Appointment apptList : list) {
-									Doctor doctor = dDAO.getDoctorById(apptList.getDoctorId());
+									int index = 1;
+									Test test =  testDAO.getTestById(apptList.getTest());
+									Status status = statusDAO.getStatusById(apptList.getStatus());
+									TestResult result = resultDAO.getResultByAppointmentId(apptList.getId());
+									
 								%>
 
 
 								<tr>
 									<%-- <th scope="row"><%= apptList.getId() %></th> --%>
-									<td><%=apptList.getFullName()%></td>
-									<td><%=apptList.getGender()%></td>
-									<td><%=apptList.getAge()%></td>
-									<td><%=apptList.getAppointmentDate()%></td>
+									
 									<%-- <td><%= apptList.getEmail()%></td> --%>
-									<td><%=apptList.getPhone()%></td>
-									<td><%=apptList.getDiseases()%></td>
-									<td><%=doctor.getFullName()%></td>
+									<td><%=index%></td>
+									<td><%=apptList.getDateAndTime()%></td>
+									<td><%=test.getTestName()%></td>
+									<td><%=apptList.getDoctor()%></td>
+									<td><%=status.getStatusName()%></td>
+									
+									<td>
+										
+										<%
+										if (result == null) {
+										%> <a href="" class="btn btn-sm btn-warning">Pending</a> <%
+ 										} else {
+										 %>  <a href="viewTestResult?id=<%= result.getId() %>" class="btn btn-sm btn-success">View Report</a> <%
+										 }
+										 %>
+									</td>
+									
 									<%-- <td><%= apptList.getAddress()%></td> --%>
 									<%-- <td><%= apptList.getUserId()%></td> --%>
-									<td>
-										<%
-										if ("Pending".equals(apptList.getStatus())) {
-										%> <a href="" class="btn btn-sm btn-warning">Pending</a> <%
- } else {
- %> <%=apptList.getStatus()%> <%
- }
- %>
-									</td>
+									
 
 
 								</tr>
 
-
+								
 								<%
+								index++;
 								}
 								%>
 

@@ -60,16 +60,28 @@
 
 						<form action="userChangePassword" method="post">
 							<div class="mb-3">
+								<label class="form-label">Enter Old Password</label> <input
+									name="oldPassword" type="password" placeholder="Enter old password"
+									class="form-control" required>
+							</div>
+							<div class="mb-3">
 								<label class="form-label">Enter New Password</label> <input
 									name="newPassword" type="password" placeholder="Enter new password"
 									class="form-control" required="required">
 
 							</div>
 							<div class="mb-3">
-								<label class="form-label">Enter Old Password</label> <input
-									name="oldPassword" type="password" placeholder="Enter old password"
-									class="form-control" required>
+								<label class="form-label">Enter Confirm Password</label> <input
+									name="confirmPassword" type="password" placeholder="Enter Confirm password"
+									class="form-control" required="required">
+
 							</div>
+							<!-- error message -->
+							<c:if test="${not empty passwordErrorMsg }">
+								<p class="text-center text-danger fs-6">${passwordErrorMsg}</p>
+								<c:remove var="passwordErrorMsg" scope="session" />
+							</c:if>
+							<!-- end of message -->
 							<input type="hidden" value="${userObj.id}" name="userId">
 
 							<button type="submit" class="btn my-bg-color text-white col-md-12">Change

@@ -25,10 +25,9 @@
 
 				<c:if test="${empty userObj}">
 
-					<!-- <li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="admin_login.jsp"><i
-							class="fa-solid fa-right-to-bracket"></i> ADMIN</a></li>
 					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="admin_login.jsp"><i class="fa-solid fa-user-tie"></i> Admin</a></li>
+					<!-- <li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="doctor_login.jsp">
 						<i class="fas fa-sign-in-alt"></i> DOCTOR</a></li>
 					<li class="nav-item"><a class="nav-link active"
@@ -36,7 +35,7 @@
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="user_login.jsp"><i class="fas fa-sign-in-alt"></i> USER</a></li>-->
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="user_login.jsp"><i class="fa-solid fa-user"></i> Sign In</a></li>
+						aria-current="page" href="user_login.jsp"><i class="fa-solid fa-user"></i> Patient</a></li>
 
 				</c:if>
 
@@ -61,7 +60,7 @@
 						<button class="btn btn-outline-light dropdown-toggle" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
 							aria-expanded="false">
-							<i class="fa-solid fa-circle-user"></i> ${userObj.fullName}
+							<i class="fa-solid fa-circle-user"></i> ${userObj.patientName}
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li><a class="dropdown-item" href="change_password.jsp">Change Password</a></li>

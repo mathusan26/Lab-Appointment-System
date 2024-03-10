@@ -2,6 +2,7 @@ package com.hms.user.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import com.hms.dao.UserDAO;
 import com.hms.db.DBConnection;
+import com.hms.entity.Patient_details;
 import com.hms.entity.User;
+import com.hms.pat.PatientDAO;
 
 @WebServlet("/user_register")
 public class UserRegisterServlet extends HttpServlet {
@@ -26,27 +29,66 @@ public class UserRegisterServlet extends HttpServlet {
 
 			// get all data/value which is coming from signup.jsp page for new User
 			// registration
-			String fullName = req.getParameter("fullName");
+			String patientName = req.getParameter("patientName");
+			int age =  Integer.parseInt(req.getParameter("age"));
+			String dateOfBirth =  req.getParameter("dateOfBirth");
 			String email = req.getParameter("email");
+			String gender = req.getParameter("gender");
+			String phone =  req.getParameter("age");
+			String address = req.getParameter("address");
 			String password = req.getParameter("password");
+			String confirmPassword = req.getParameter("confirmPassword");
+			
+			
+			HttpSession session = req.getSession();
+			
+			if(!(password.equals(confirmPassword))) {
+				session.setAttribute("passwordErrorMsg", "Password doesn't match");
+				resp.sendRedirect("signup.jsp");
+				return;
+			}
+			
+		
 
 			// Set all data to User Entity
-			User user = new User(fullName, email, password);
+			Patient_details patient = new Patient_details( patientName,  dateOfBirth,  email,  phone,  gender,
+					 age,  address, password);
 
 			// Create Connection with DB
-			UserDAO userDAO = new UserDAO(DBConnection.getConn());
+			PatientDAO patientDAO = new PatientDAO(DBConnection.getConn());
+			
+			List<Patient_details>alreadyExistPatient = patientDAO.getPatientByEmail(email);
+			
+			
+			if(alreadyExistPatient != null && alreadyExistPatient.size() > 0) {
+				session.setAttribute("emailErrorMsg", "This Email already exists ");
+				resp.sendRedirect("signup.jsp");
+				return;
+			}
 			
 			//get session
-			HttpSession session = req.getSession();
+			
 			
 
 			// call userRegister() and pass user object to insert or save user into DB.
-			boolean f = userDAO.userRegister(user); // userRegister() method return boolean type value
+			boolean f = patientDAO.patientRegister(patient); // userRegister() method return boolean type value
 
-			if (f == true) {
+			Patient_details createdPatient = patientDAO.LastCreatedPatient();
+			String uniqueReference = "AMPAT" + createdPatient.getId();
+			boolean g = patientDAO.updatePatientReference(createdPatient.getId(),uniqueReference);
+			
+			if (f == true && g== true) {
 
-				session.setAttribute("successMsg", "Register Successfully");
-				resp.sendRedirect("signup.jsp");//which page you want to show this msg
+				Patient_details user = patientDAO.loginPatient(email, password);
+				if (user!=null) {
+					session.setAttribute("userObj",user);
+					resp.sendRedirect("index.jsp"); 
+				}
+				else {
+					session.setAttribute("successMsg", "Register Successfully Please logIn");
+					resp.sendRedirect("user_login.jsp"); 
+				}
+				//resp.sendRedirect("signup.jsp");//which page you want to show this msg
 				//System.out.println("register successfull");
 				// out.println("success");
 

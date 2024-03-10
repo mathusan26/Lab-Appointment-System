@@ -1,7 +1,11 @@
 <%@page import="com.hms.entity.Doctor"%>
+<%@page import="com.hms.entity.Test"%>
 <%@page import="java.util.List"%>
 <%@page import="com.hms.db.DBConnection"%>
 <%@page import="com.hms.dao.DoctorDAO"%>
+<%@page import="com.hms.dao.TestDAO"%>
+<%@page import="com.hms.entity.Patient_details"%>
+<%@page import="com.hms.pat.PatientDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -45,6 +49,13 @@
 
 </head>
 <body>
+	<% 
+		response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+		
+		response.setHeader("Pragma","no-cache");
+
+		response.setHeader("Expires", "0");
+	%>
 	<%@include file="component/navbar.jsp"%>
 
 	<!-- start 1st Div -->
@@ -106,67 +117,39 @@
 
 
 						<!-- boostrap form -->
+						<div class="row">
+							<div class="col-md-12">
+								<label class="form-label">Patient Name </label> 
+								<input type="text" required="required"	name="name" disabled class="form-control" value="${ userObj.patientName }">
+							</div>
+						</div>
 						<form class="row g-3" action="addAppointment" method="post">
 							
 							<!-- take user Id in hidden field -->
-							<input type="hidden" name="userId" value="${ userObj.id }">
+							<input type="hidden" name="patientId" value="1">
 							
-							<!-- <div class="col-md-6">
-								<label class="form-label">Full Name</label> <input required="required"
-									name="fullName" type="text" placeholder="Enter full name"
-									class="form-control">
-
-							</div>
-
-							<div class="col-md-6">
-								<label class="form-label">Gender</label> <select
-									class="form-control" name="gender" required="required">
-									<option selected="selected" disabled="disabled">---Select
-										Gender---</option>
-									<option value="male">Male</option>
-									<option value="female">Female</option>
-								</select>
-							</div> -->
-
-							<div class="col-md-6">
-								<label class="form-label">Age</label> <input name="age"
-								required="required"	type="number" placeholder="Enter your Age" class="form-control">
-							</div>
 							<div class="col-md-6">
 								<label class="form-label">Appointment Date</label> <input
-								required="required"	name="appointmentDate" type="date" class="form-control">
+								required="required"	name="dateAndTime" type="date" class="form-control">
 							</div>
-
 							<div class="col-md-6">
-								<label class="form-label">Email</label> <input name="email"
-								required="required"	type="email" placeholder="Enter email" class="form-control">
-							</div>
-
-							<div class="col-md-6">
-								<label class="form-label">Phone</label> <input name="phone"
-								required="required"	type="number" maxlength="11" placeholder="Enter Mobile no."
+								<label class="form-label">Doctor Name</label> <input required="required"
+									name="doctor" type="text" placeholder="Enter doctor name"
 									class="form-control">
 							</div>
-
 							<div class="col-md-6">
-								<label class="form-label">Diseases</label> <input
-								required="required"	name="diseases" type="text" placeholder="Enter diseases"
-									class="form-control">
-							</div>
-
-							<div class="col-md-6">
-								<label class="form-label">Doctor</label> <select
-								 required="required" class="form-control" name="doctorNameSelect">
+								<label class="form-label">Test</label> <select
+								 required="required" class="form-control" name="testId">
 									<option selected="selected" disabled="disabled">---Select---</option>
 									
 									<%
-									DoctorDAO doctorDAO = new DoctorDAO(DBConnection.getConn());
-									List<Doctor> listOfDoctor = doctorDAO.getAllDoctor();
-									for(Doctor d : listOfDoctor)
+									TestDAO testDAO = new TestDAO(DBConnection.getConn());
+									List<Test> listOfTest = testDAO.getAllTest();
+									for(Test t : listOfTest)
 									
 									{%>
 									<!-- actually we take id of doctor from doctor table -->
-									<option value="<%= d.getId() %>"> <%= d.getFullName()%> (<%= d.getSpecialist() %>) </option>
+									<option value="<%= t.getId() %>"> <%= t.getTestName()%> </option>
 									
 									<%
 									}
@@ -175,15 +158,6 @@
 									<!-- <option>Doctor name</option> -->
 								</select>
 							</div>
-
-
-							<!-- below are visible to right side part of form-->
-
-							<div class="col-md-12">
-								<label class="form-label">Full Address</label>
-								<textarea name="address" required="required" class="form-control" rows="3" cols=""></textarea>
-							</div>
-
 
 							<c:if test="${empty userObj}">
 								<div class="col-md-12">

@@ -6,6 +6,7 @@ public class Test {
 		private int testId;
 		private String test_name;
 		private String test_description;
+		private double price;
 	
 		
 		public Test() {
@@ -14,19 +15,21 @@ public class Test {
 		}
 
 
-		public Test(String test_name,String test_description) {
+		public Test(String test_name,String test_description,double price) {
 			super();
 			this.test_name = test_name;
-			this.test_description =test_description	;		
+			this.test_description =test_description	;	
+			this.price =price;
 		}
 		
 		
 
-		public Test(int testId, String test_name,String test_description) {
+		public Test(int testId, String test_name,String test_description,double price) {
 			super();
 			this.testId = testId;
 			this.test_name = test_name;
 			this.test_description = test_description;
+			this.price = price;
 	
 		}
 
@@ -58,6 +61,15 @@ public class Test {
 
 		public void setTestDescription(String test_description) {
 			this.test_description = test_description;
+		}
+		
+		public void setPrice(double price) {
+			this.price = price;
+		}
+
+
+		public double getPrice() {
+			return price;
 		}
 
 

@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.hms.dao.AppointmentDAO;
+import com.hms.dao.TestDAO;
 import com.hms.db.DBConnection;
 import com.hms.entity.Appointment;
+import com.hms.entity.Test;
 
 @WebServlet("/addAppointment")
 public class AppointmentServlet extends HttpServlet{
@@ -19,19 +21,19 @@ public class AppointmentServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-	int userId	= Integer.parseInt(req.getParameter("userId"));
-	String fullName = req.getParameter("fullName");
-	String gender = req.getParameter("gender");
-	String age = req.getParameter("age");
-	String appointmentDate = req.getParameter("appointmentDate");
-	String email = req.getParameter("email");
-	String phone = req.getParameter("phone");
-	String diseases = req.getParameter("diseases");
-	int doctorId = Integer.parseInt(req.getParameter("doctorNameSelect"));
-	String address = req.getParameter("address");
+	int patientId	= Integer.parseInt(req.getParameter("patientId"));
+	String dateAndTime = req.getParameter("dateAndTime");
+	int testId = Integer.parseInt(req.getParameter("testId"));
+	String doctor = req.getParameter("doctor");
+	int statusId = 6;
 	
 	
-	Appointment appointment = new Appointment(userId, fullName, gender, age, appointmentDate, email, phone, diseases, doctorId, address, "Pending");
+	
+	TestDAO testDAO =new TestDAO(DBConnection.getConn());
+	Test test = testDAO.getTestById(testId);
+	
+	Appointment appointment = new Appointment(patientId, dateAndTime, doctor, testId,statusId, test.getPrice());
+	
 	
 	AppointmentDAO appointmentDAO = new AppointmentDAO(DBConnection.getConn());
 	boolean f = appointmentDAO.addAppointment(appointment);
@@ -41,8 +43,9 @@ public class AppointmentServlet extends HttpServlet{
 	
 	if(f==true) {
 		
-		session.setAttribute("successMsg", "Appointment is recorded Successfully.");
-		resp.sendRedirect("user_appointment.jsp");
+//		session.setAttribute("successMsg", "Appointment is recorded Successfully.");
+		Appointment LastAppointment = appointmentDAO.getLastAppointment();
+		resp.sendRedirect("payment.jsp?id="+LastAppointment.getId());
 		
 		
 	}

@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #6a994e;">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="index.jsp"><i
-			class="fa-sharp fa-solid fa-hospital"></i> Doctor Patient Portal</a>
+			class="fa-sharp fa-solid fa-hospital"></i> A.M Medi Labs Admin Portal</a>
 		<!-- 		<a class="navbar-brand" href="index.jsp"><i
 			class="fa-solid fa-house-chimney-medical"></i> E-HOSPITAL</a> -->
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -16,15 +16,6 @@
 				<li class="nav-item"><a class="nav-link active"
 					aria-current="page" href="index.jsp"><i class="fa fa-home"></i>
 						HOME</a></li>
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="doctor.jsp"><i
-						class="fa-solid fa-user-doctor"></i> DOCTOR</a></li>
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="view_doctor.jsp"><i
-						class="fa-solid fa-list"></i> VIEW DOCTOR</a></li>
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="patient.jsp"><i
-						class="fa fa-wheelchair"></i> PATIENT</a></li>
 			</ul>
 
 			<div class="dropdown">

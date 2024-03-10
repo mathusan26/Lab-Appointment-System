@@ -20,7 +20,8 @@
 <!-- customs css for this page -->
 <style type="text/css">
 .my-card {
-	box-shadow: 0px 0px 10px 1px maroon;
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2);
+	
 	/*box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);*/
 }
 </style>
@@ -80,7 +81,7 @@
 							</div>
 
 							<button type="submit"
-								class="btn my-bg-color text-white col-md-12">Submit</button>
+								class="btn my-bg-color text-white col-md-12">Log In</button>
 						</form>
 						<!-- end of boostrap form -->
 					</div>

@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.hms.dao.UserDAO;
+import com.hms.pat.*;
 import com.hms.db.DBConnection;
-import com.hms.entity.User;
+import com.hms.entity.Patient_details;
 
 @WebServlet("/userLogin")
 public class UserLoginServlet extends HttpServlet {
@@ -24,8 +24,8 @@ public class UserLoginServlet extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		
-		UserDAO userDAO = new UserDAO(DBConnection.getConn());
-		User user = userDAO.loginUser(email, password);
+		PatientDAO patientDAO = new PatientDAO(DBConnection.getConn());
+		Patient_details user = patientDAO.loginPatient(email, password);
 		
 		if (user!=null) {
 			session.setAttribute("userObj",user);

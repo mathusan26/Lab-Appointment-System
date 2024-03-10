@@ -26,6 +26,7 @@
 </style>
 <!-- end of customs css for this page -->
 
+
 </head>
 <body>
 	<!-- navbar -->
@@ -64,49 +65,69 @@
 						<form action="user_register" method="post">
 							<div class="mb-2">
 								<label class="form-label">Patient Name</label> <input
-									name="patient_name" type="text" placeholder="Enter full name"
+									name="patientName" required type="text" placeholder="Enter full name"
 									class="form-control">
 
 							</div>
 							<div class="mb-2 row">
 								<div class="col-md-6">
 									<label class="form-label">Age</label> <input
-									name="age" type="text" placeholder="Enter age"
+									name="age" type="number" required placeholder="Enter age"
 									class="form-control">
 								</div>
 								<div class="col-md-6">
-									<label class="form-label">Gender</label> <input
-									name="gender" type="text" placeholder="Enter geder"
-									class="form-control">
+									<label class="form-label">Gender</label> <select
+									name="gender"  required class="form-control">
+									<option selected="selected" disabled="disabled">---Select---</option>
+									<option value="male"> male </option>
+									<option value="female"> female</option>
+									</select>
 								</div>
+								
+								
 							</div>
 							<div class="mb-2">
 								<label class="form-label">Phone Number</label> <input
-									name="phone" type="text" placeholder="Enter phone number"
+									name="phone" type="text" required placeholder="Enter phone number"
+									class="form-control">
+							</div>
+							<div class="mb-2">
+								<label class="form-label">Date Of Birth</label> <input
+									name="dateOfBirth" type="date" required placeholder="Enter date of birth"
 									class="form-control">
 							</div>
 							<div class="mb-2">
 								<label class="form-label">Email address</label> <input
-									name="email" type="email" placeholder="Enter Email"
+									name="email" type="email" required  placeholder="Enter Email"
 									class="form-control">
 								<div id="emailHelp" class="form-text">We'll never share
 									your email with anyone else.</div>
 							</div>
+								<c:if test="${not empty emailErrorMsg }">
+									<p class="text-center text-danger fs-6">${emailErrorMsg}</p>
+									<c:remove var="emailErrorMsg" scope="session" />
+								</c:if>
 							<div class="mb-2">
 								<label class="form-label">Address</label> <textarea
-									name="address" class="form-control"></textarea>
+									name="address" required class="form-control"></textarea>
 							</div>
 							<div class="mb-2 row">
 								<div class="col-md-6">
 									<label class="form-label">Password</label> <input
-									name="password" type="password" placeholder="Password"
+									name="password" required type="password" placeholder="Password"
 									class="form-control">
 								</div>
 								<div class="col-md-6">
 									<label class="form-label">Confirm Password</label> <input
-									name="confirm_password" type="password" placeholder="Confirm Password"
+									name="confirmPassword" required type="password" placeholder="Confirm Password"
 									class="form-control">
 								</div>
+								<c:if test="${not empty passwordErrorMsg }">
+									<p class="text-center text-danger fs-6">${passwordErrorMsg}</p>
+									<c:remove var="passwordErrorMsg" scope="session" />
+								</c:if>
+								
+								
 							</div>
 
 							<button type="submit" class="btn my-bg-color text-white col-md-12">Register</button>

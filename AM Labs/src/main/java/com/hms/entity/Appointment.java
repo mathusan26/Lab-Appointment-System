@@ -1,184 +1,150 @@
 package com.hms.entity;
 
 public class Appointment {
-
-	private int id;
-	private int userId;
-	private String fullName;
-	private String gender;
-	private String age;
-	private String appointmentDate;
-	private String email;
-	private String phone;
-	private String diseases;
-	private int doctorId;
-	private String address;
-	private String status;
 	
-	
-	public Appointment() {
-		super();
-		// TODO Auto-generated constructor stub
+		
+		private int AppoinmentId;
+		private int PatientId;
+		private String DateAndTime;
+		private String Doctor;
+		private int TestId;
+		private int statusId;
+		private double price;
+		
+		
+		public Appointment() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
+
+		public Appointment(int AppoinmentId, int PatientId, String DateAndTime, String Doctor, int TestId, int statusId) {
+			super();
+			this.AppoinmentId = AppoinmentId;
+			this.PatientId = PatientId;
+			this.DateAndTime = DateAndTime;
+			this.Doctor = Doctor;
+			this.TestId = TestId;
+			this.statusId = statusId;
+		
+		}
+		
+		public Appointment( int PatientId, String DateAndTime, String Doctor, int TestId, int statusId, double price) {
+			super();
+		
+			this.PatientId = PatientId;
+			this.DateAndTime = DateAndTime;
+			this.Doctor = Doctor;
+			this.TestId = TestId;
+			this.statusId = statusId;
+			this.price = price;
+		
+		}
+		public Appointment(int AppoinmentId) {
+			super();
+			this.AppoinmentId = AppoinmentId;
+			
+		
+		}
+		public Appointment(int AppoinmentId,double price) {
+			super();
+			this.AppoinmentId = AppoinmentId;
+			this.price = price;
+			
+		
+		}
+		public Appointment( String DateAndTime, int statusId,int AppoinmentId) {
+			super();
+			this.AppoinmentId = AppoinmentId;
+			this.DateAndTime = DateAndTime;
+			this.statusId = statusId;
+		
+		}
+
+
+		public Appointment(int PatientId, String DateAndTime, String Doctor, int TestId, int statusId) {
+			super();
+			
+			this.PatientId = PatientId;
+			this.DateAndTime = DateAndTime;
+			this.Doctor = Doctor;
+			this.TestId = TestId;
+			this.statusId = statusId;
+		}
+
+
+		public int getId() {
+			return AppoinmentId;
+		}
+
+
+		public void setId(int AppoinmentId) {
+			this.AppoinmentId = AppoinmentId;
+		}
+
+
+		public int getPatientId() {
+			return PatientId;
+		}
+
+
+		public void setPatientId(int PatientId) {
+			this.PatientId = PatientId;
+		}
+
+
+		public String getDateAndTime() {
+			return DateAndTime;
+		}
+
+
+		public void setDateAndTime(String DateAndTime) {
+			this.DateAndTime = DateAndTime;
+		}
+
+
+		public String getDoctor() {
+			return Doctor;
+		}
+
+
+		public void setDoctor(String Doctor) {
+			this.Doctor = Doctor;
+		}
+
+
+		public int getTest() {
+			return TestId;
+		}
+
+
+		public void setTest(int TestId) {
+			this.TestId = TestId;
+		}
+		
+		public double getPrice() {
+			return price;
+		}
+
+
+		public void setPrice(double price) {
+			this.price = price;
+		}
+
+
+
+		public int getStatus() {
+			return statusId;
+		}
+
+
+		public void setStatus(int statusId) {
+			this.statusId = statusId;
+		}
+		
+		
+		
+
 	}
 
 
-	public Appointment(int id, int userId, String fullName, String gender, String age, String appointmentDate,
-			String email, String phone, String diseases, int doctorId, String address, String status) {
-		super();
-		this.id = id;
-		this.userId = userId;
-		this.fullName = fullName;
-		this.gender = gender;
-		this.age = age;
-		this.appointmentDate = appointmentDate;
-		this.email = email;
-		this.phone = phone;
-		this.diseases = diseases;
-		this.doctorId = doctorId;
-		this.address = address;
-		this.status = status;
-	}
-
-
-	public Appointment(int userId, String fullName, String gender, String age, String appointmentDate, String email,
-			String phone, String diseases, int doctorId, String address, String status) {
-		super();
-		this.userId = userId;
-		this.fullName = fullName;
-		this.gender = gender;
-		this.age = age;
-		this.appointmentDate = appointmentDate;
-		this.email = email;
-		this.phone = phone;
-		this.diseases = diseases;
-		this.doctorId = doctorId;
-		this.address = address;
-		this.status = status;
-	}
-
-
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-	public int getUserId() {
-		return userId;
-	}
-
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-
-	public String getFullName() {
-		return fullName;
-	}
-
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
-
-	public String getGender() {
-		return gender;
-	}
-
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-
-	public String getAge() {
-		return age;
-	}
-
-
-	public void setAge(String age) {
-		this.age = age;
-	}
-
-
-	public String getAppointmentDate() {
-		return appointmentDate;
-	}
-
-
-	public void setAppointmentDate(String appointmentDate) {
-		this.appointmentDate = appointmentDate;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-	public String getPhone() {
-		return phone;
-	}
-
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-
-	public String getDiseases() {
-		return diseases;
-	}
-
-
-	public void setDiseases(String diseases) {
-		this.diseases = diseases;
-	}
-
-
-	public int getDoctorId() {
-		return doctorId;
-	}
-
-
-	public void setDoctorId(int doctorId) {
-		this.doctorId = doctorId;
-	}
-
-
-	public String getAddress() {
-		return address;
-	}
-
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-
-	public String getStatus() {
-		return status;
-	}
-
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	
-	
-	
-	
-	
-}

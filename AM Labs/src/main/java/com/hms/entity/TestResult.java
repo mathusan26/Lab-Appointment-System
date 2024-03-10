@@ -1,14 +1,16 @@
 package com.hms.entity;
 
+import java.io.InputStream;
+
 public class TestResult {
 	
 	private int TestResultId;
 	private int AppoinmentId;
 	private int PatientId;
-	private String TestResult;
-	private String Technician;
+	private InputStream TestResult;
+	private int TechnicianId;
 	private int TestId;
-	private String status;
+	private int statusId;
 	
 	
 	public TestResult() {
@@ -17,28 +19,28 @@ public class TestResult {
 	}
 
 
-	public TestResult(int TestResultId, int PatientId, int AppoinmentId, String TestResult, String Technician, int TestId,String status) {
+	public TestResult(int TestResultId, int PatientId, int AppoinmentId, InputStream TestResult, int TechnicianId, int TestId,int statusId) {
 		super();
 		this.TestResultId = TestResultId;
 		this.AppoinmentId = AppoinmentId;
 		this.PatientId = PatientId;
 		this.TestResult = TestResult;
-		this.Technician = Technician;
+		this.TechnicianId = TechnicianId;
 		this.TestId = TestId;
-		this.status = status;
+		this.statusId = statusId;
 	
 	}
 
 
-	public TestResult(int PatientId, int AppoinmentId, String TestResult, String Technician, int TestId,String status) {
+	public TestResult(int PatientId, int AppoinmentId, InputStream TestResult, int TechnicianId, int TestId,int statusId) {
 		super();
 		
 		this.AppoinmentId = AppoinmentId;
 		this.PatientId = PatientId;
 		this.TestResult = TestResult;
-		this.Technician = Technician;
+		this.TechnicianId = TechnicianId;
 		this.TestId = TestId;
-		this.status = status;
+		this.statusId = statusId;
 	}
 
 
@@ -71,23 +73,23 @@ public class TestResult {
 		this.AppoinmentId = AppoinmentId;
 	}
 
-	public String getTestResult() {
+	public InputStream getTestResult() {
 		return TestResult;
 	}
 
 
-	public void setTestResult(String TestResult) {
+	public void setTestResult(InputStream TestResult) {
 		this.TestResult = TestResult;
 	}
 
 
-	public String getTechnician() {
-		return Technician;
+	public int getTechnician() {
+		return TechnicianId;
 	}
 
 
-	public void setTechnician(String Technician) {
-		this.Technician = Technician;
+	public void setTechnician(int TechnicianId) {
+		this.TechnicianId = TechnicianId;
 	}
 
 
@@ -102,17 +104,21 @@ public class TestResult {
 
 
 
-	public String getStatus() {
-		return status;
+	public int getStatus() {
+		return statusId;
 	}
 
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setStatus(int statusId) {
+		this.statusId = statusId;
 	}
 	
 	
-	
+	@Override
+	public String toString() {
+		return "TestResult [TestResultId=" + TestResultId + ", AppoinmentId=" + AppoinmentId + ", PatientId=" + PatientId + ", TestResult=" + TestResult + 
+				", TechnicianId=" + TechnicianId + ", TestId=" + TestId  + ", statusId=" + statusId +"]";
+	}
 
 
 }

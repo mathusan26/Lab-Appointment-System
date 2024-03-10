@@ -39,7 +39,7 @@
 			<div class="col-md-4 offset-4">
 				<div class="card my-card">
 					<div class="card-body">
-						<p class="fs-3 text-center text-danger">Edit Doctor Details</p>
+						<p class="fs-3 text-center text-sucess">Edit Doctor Details</p>
 
 						<!-- message print -->
 						<!-- for success msg -->
@@ -50,7 +50,7 @@
 
 						<!-- for error msg -->
 						<c:if test="${not empty errorMsg }">
-							<p class="text-center text-danger fs-3">${errorMsg}</p>
+							<p class="text-center text-success fs-3">${errorMsg}</p>
 							<c:remove var="errorMsg" scope="session" />
 						</c:if>
 						<!-- End of message print -->

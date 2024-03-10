@@ -301,7 +301,7 @@ public class DoctorDAO {
 
 		try {
 
-			String sql = "select * from user_details";
+			String sql = "select * from patient_details";
 			PreparedStatement pstmt = this.conn.prepareStatement(sql);
 
 			ResultSet resultSet = pstmt.executeQuery();
@@ -318,13 +318,13 @@ public class DoctorDAO {
 	}
 
 	// Count total Specialist Number
-	public int countTotalSpecialist() {
+	public int countTotalTechnician() {
 
 		int i = 0;
 
 		try {
 
-			String sql = "select * from specialist";
+			String sql = "select * from technician";
 			PreparedStatement pstmt = this.conn.prepareStatement(sql);
 
 			ResultSet resultSet = pstmt.executeQuery();
@@ -338,6 +338,29 @@ public class DoctorDAO {
 		}
 
 		return i;
+	}
+	
+	// Count total Specialist Number
+	public int countTotalTestsOfLab() {
+
+		int i = 0;
+
+		try {
+
+			String sql = "select * from lab_tests";
+			PreparedStatement pstmt = this.conn.prepareStatement(sql);
+
+			ResultSet resultSet = pstmt.executeQuery();
+			while (resultSet.next()) {
+
+				i++;
+			}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			return i;
 	}
 
 	// check old password

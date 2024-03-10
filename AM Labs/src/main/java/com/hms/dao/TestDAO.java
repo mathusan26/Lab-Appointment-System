@@ -38,7 +38,7 @@ public class TestDAO {
 					test.setId(resultSet.getInt("testId"));
 					test.setTestName(resultSet.getString("test_name"));
 					test.setTestDescription(resultSet.getString("test_description"));
-					
+					test.setPrice(resultSet.getDouble("price"));
 			
 					TestList.add(test);
 				}
@@ -58,11 +58,12 @@ public class TestDAO {
 
 			try {
 				// insert user in db
-				String sql = "insert into lab_tests(test_name,test_description) values(?,?)";
+				String sql = "insert into lab_tests(test_name,test_description,price) values(?,?,?)";
 
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, test.getTestName());
 				pstmt.setString(2, test.getTestDescription());
+				pstmt.setDouble(3, test.getPrice());
 				pstmt.executeUpdate();
 
 				f = true; // if query execute successfully then f becomes true otherwise false...
@@ -95,6 +96,7 @@ public class TestDAO {
 						test.setId(resultSet.getInt("testId"));
 						test.setTestName(resultSet.getString("test_name"));
 						test.setTestDescription(resultSet.getString("test_description"));
+						test.setPrice(resultSet.getDouble("price"));
 						
 
 					}
@@ -115,14 +117,14 @@ public class TestDAO {
 
 				try {
 
-					String sql = "update lab_tests set test_name =? ,test_description=? where testId=?";
+					String sql = "update lab_tests set test_name =? ,test_description=?,price=? where testId=?";
 
 					PreparedStatement pstmt = this.conn.prepareStatement(sql);
 					pstmt.setString(1, test.getTestName());
 					pstmt.setString(2, test.getTestDescription());
-				
+					pstmt.setDouble(3, test.getPrice());
 					// need to set id also for update
-					pstmt.setInt(3, test.getId());
+					pstmt.setInt(4, test.getId());
 
 					pstmt.executeUpdate();
 					// if query updated or all ok than

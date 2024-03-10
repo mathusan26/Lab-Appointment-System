@@ -17,8 +17,17 @@ public class AdminLogoutServlet extends HttpServlet {
 		
 		//get session means get "adminObj" and remove it, logout done!
 		HttpSession session = req.getSession();
+		resp.setHeader("Cache-Control","no-cache");
+
+		resp.setHeader("Cache-Control","no-store");
+
+		resp.setHeader("Pragma","no-cache");
+
+		resp.setDateHeader ("Expires", 0);
 		session.removeAttribute("adminObj");
 		//show message after logout
+		req.getSession(false);
+		session.setAttribute("adminObj",null);
 		session.setAttribute("successMsg", "Admin Logout Successfully");
 		resp.sendRedirect("admin_login.jsp");
 		

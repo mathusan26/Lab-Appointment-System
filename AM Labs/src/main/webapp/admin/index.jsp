@@ -14,7 +14,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin page</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 ">
+<meta name="description" content="laboratory appointment management">
+<meta name="keywords" content="laboratory appointment, doctor appointment">
+<meta name="author" content="Mathusan">
+<title>A.M Medi Labs Admin Portal</title>
+
+<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+
+<title>Admin Page</title>
 <%@include file="../component/allcss.jsp"%>
 
 
@@ -22,8 +31,13 @@
 <!-- customs css for this page -->
 <style type="text/css">
 .my-card {
-	box-shadow: 0px 0px 10px 1px maroon;
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.3);
 	/*box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);*/
+}
+
+a, u {
+  text-decoration: none !important; 
+  color:green;
 }
 </style>
 <!-- end of customs css for this page -->
@@ -42,7 +56,7 @@
 
 
 	<div class="container p-5">
-		<p class="text-center text-danger fs-3">Admin Dashboard</p>
+		<p class="text-center text-success fs-3">Admin Dashboard</p>
 
 		<!-- message print -->
 		<!-- for success msg -->
@@ -61,56 +75,64 @@
 		<!-- create connection with db and others -->
 		<% 
 		DoctorDAO docDAO = new DoctorDAO(DBConnection.getConn());
-		int totalNumberOfDoctor = docDAO.countTotalDoctor();
 		int totalNumberOfUser = docDAO.countTotalUser();
+		int totalNumberOfTechnician = docDAO.countTotalTechnician();
 		int totalNumberOfAppointment = docDAO.countTotalAppointment();
-		int totalNumberOfSpecialist = docDAO.countTotalSpecialist();
+		int totalNumberOfTests = docDAO.countTotalTestsOfLab();
 		%>
 
 		<!-- row-1 -->
 		<div class="row">
 			<div class="col-md-4">
 				<div class="card my-card">
-					<div class="card-body text-center text-danger">
-						<i class="fa-solid fa-user-doctor fa-3x"></i><br>
-						<p class="fs-4 text-center">
-							Doctor <br><%= totalNumberOfDoctor %>
+					<div class="card-body text-center text-success">
+						<a href="patient/view_patient.jsp" >
+							<i class="fa-solid fa-user-doctor fa-3x"></i><br>
+							<p class="fs-4 text-center">
+							Patient <br><%= totalNumberOfUser %>
 
 						</p>
+						</a>
 					</div>
 				</div>
 
 			</div>
 			<div class="col-md-4">
 				<div class="card my-card">
-					<div class="card-body text-center text-danger">
-						<i class="fas fa-user-circle fa-3x"></i><br>
-						<p class="fs-4 text-center">
-							User <br><%= totalNumberOfUser %>
-						</p>
+					<div class="card-body text-center text-success">
+						<a href="technician/view_technician.jsp" >
+							<i class="fas fa-user-circle fa-3x"></i><br>
+							<p class="fs-4 text-center">
+								Technician <br><%= totalNumberOfTechnician %>
+							</p>
+						</a>
 					</div>
 				</div>
 
 			</div>
 			<div class="col-md-4">
 				<div class="card my-card">
-					<div class="card-body text-center text-danger">
+					<div class="card-body text-center text-success">
 						<i class="fa-solid fa-calendar-check fa-3x"></i><br>
-						<p class="fs-4 text-center">
-							Total Appointment <br><%= totalNumberOfAppointment %>
-						</p>
+						<a href="appointment/view_appointment.jsp" >
+							<p class="fs-4 text-center">
+								Total Appointment <br><%= totalNumberOfAppointment %>
+							</p>
+						</a>
 					</div>
 				</div>
 
 			</div>
 			<div class="col-md-4 mt-2">
 				<div class="card my-card" data-bs-toggle="modal"
-					data-bs-target="#exampleModal">
-					<div class="card-body text-center text-danger">
+					>
+					<div class="card-body text-center text-success">
+					<a href="test/view_test.jsp" >
 						<i class="fa-solid fa-user-doctor fa-3x"></i><br>
 						<p class="fs-4 text-center">
-							Specialist <br><%= totalNumberOfSpecialist %>
+							Test <br><%= totalNumberOfTechnician %>
 						</p>
+					</a>
 					</div>
 				</div>
 

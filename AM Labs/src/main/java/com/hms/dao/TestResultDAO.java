@@ -1,13 +1,15 @@
 package com.hms.dao;
 
+import java.io.BufferedInputStream;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hms.entity.Appoinment1;
 import com.hms.entity.TestResult;
+import com.mysql.cj.jdbc.Blob;
 
 
 public class TestResultDAO {
@@ -25,15 +27,19 @@ public class TestResultDAO {
 
 			try {
 
-				String sql = "insert into test_result_details( AppoinmentId, patientId,Technician,TestId,TestResult, status) values(?,?,?,?,?,?)";
+				String sql = "insert into test_result_details( appoinmentId, patientId,testResult,technicianId,testId, statusId) values(?,?,?,?,?,?)";
 				PreparedStatement pstmt = this.conn.prepareStatement(sql);
 
-				pstmt.setInt(1, testresult.getPatientId());
-				pstmt.setInt(2, testresult.getAppointmentId());
-				pstmt.setString(3, testresult.getTechnician());
-				pstmt.setInt(3, testresult.getTestId());
-				pstmt.setString(4, testresult.getTestResult());
-				pstmt.setString(11, testresult.getStatus());
+				pstmt.setInt(1, testresult.getAppointmentId());
+				pstmt.setInt(2, testresult.getPatientId());
+				
+				if (testresult.getTestResult() != null) {
+					// fetches input stream of the upload file for the blob column
+					pstmt.setBlob(3, testresult.getTestResult());
+				}
+				pstmt.setInt(4, testresult.getTechnician());
+				pstmt.setInt(5, testresult.getTestId());
+				pstmt.setInt(6, testresult.getStatus());
 
 				pstmt.executeUpdate();
 
@@ -67,12 +73,12 @@ public class TestResultDAO {
 					testResult = new TestResult();
 
 					testResult.setId(resultSet.getInt(1));// appoint id
-					testResult.setPatientId(resultSet.getInt(2));// userId
-					testResult.setAppointmentId(resultSet.getInt(3));
-					testResult.setTestId(resultSet.getInt(4));
-					testResult.setTechnician(resultSet.getString(5));
-					testResult.setTestResult(resultSet.getString(5));
-					testResult.setStatus(resultSet.getString(12));
+					testResult.setAppointmentId(resultSet.getInt(2));
+					testResult.setPatientId(resultSet.getInt(3));// userId
+					testResult.setTestResult(resultSet.getBinaryStream(4));
+					testResult.setTechnician(resultSet.getInt(5));
+					testResult.setTestId(resultSet.getInt(6));
+					testResult.setStatus(resultSet.getInt(7));
 					resultList.add(testResult);
 
 				}
@@ -126,12 +132,12 @@ public class TestResultDAO {
 					testResult = new TestResult();
 
 					testResult.setId(resultSet.getInt(1));// appoint id
-					testResult.setPatientId(resultSet.getInt(2));// userId
-					testResult.setAppointmentId(resultSet.getInt(3));
-					testResult.setTestId(resultSet.getInt(4));
-					testResult.setTechnician(resultSet.getString(5));
-					testResult.setTestResult(resultSet.getString(5));
-					testResult.setStatus(resultSet.getString(12));
+					testResult.setAppointmentId(resultSet.getInt(2));
+					testResult.setPatientId(resultSet.getInt(3));// userId
+					testResult.setTestResult(resultSet.getBinaryStream(4));
+					testResult.setTechnician(resultSet.getInt(5));
+					testResult.setTestId(resultSet.getInt(6));
+					testResult.setStatus(resultSet.getInt(7));
 					resultList.add(testResult);
 
 				}
@@ -142,5 +148,131 @@ public class TestResultDAO {
 
 			return resultList;
 		}
+		
+		// get list of appointment for logged in specific user 
+				//show appointment list for specific user panel
+				public TestResult getResultByAppointmentId(int appoinmentId) {
+					//List<TestResult> resultList = new ArrayList<TestResult>();
+
+					TestResult testResult = null;
+
+					try {
+
+						String sql = "select * from test_result_details where appoinmentId=?";
+						PreparedStatement pstmt = this.conn.prepareStatement(sql);
+
+						pstmt.setInt(1, appoinmentId);
+
+						ResultSet resultSet = pstmt.executeQuery();
+
+						while (resultSet.next()) {
+
+							testResult = new TestResult();
+
+							testResult.setId(resultSet.getInt(1));// appoint id
+							testResult.setAppointmentId(resultSet.getInt(2));
+							testResult.setPatientId(resultSet.getInt(3));// userId
+							testResult.setTestResult(resultSet.getBinaryStream(4));
+							testResult.setTechnician(resultSet.getInt(5));
+							testResult.setTestId(resultSet.getInt(6));
+							testResult.setStatus(resultSet.getInt(7));
+							//resultList.add(testResult);
+
+						}
+
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					return testResult;
+
+				}
+				
+				// get list of appointment for logged in specific user 
+				//show appointment list for specific user panel
+				public TestResult getTestResultById(int testResultId) {
+					//List<TestResult> resultList = new ArrayList<TestResult>();
+
+					TestResult testResult = null;
+
+					try {
+
+						String sql = "select * from test_result_details where testResultId=?";
+						PreparedStatement pstmt = this.conn.prepareStatement(sql);
+
+						pstmt.setInt(1, testResultId);
+
+						ResultSet resultSet = pstmt.executeQuery();
+
+						while (resultSet.next()) {
+
+							testResult = new TestResult();
+
+							testResult.setId(resultSet.getInt(1));// appoint id
+							testResult.setAppointmentId(resultSet.getInt(2));
+							testResult.setPatientId(resultSet.getInt(3));// userId
+							testResult.setTestResult(resultSet.getBinaryStream(4));
+							testResult.setTechnician(resultSet.getInt(5));
+							testResult.setTestId(resultSet.getInt(6));
+							testResult.setStatus(resultSet.getInt(7));
+							//resultList.add(testResult);
+
+						}
+
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					return testResult;
+
+				}
+				public TestResult getTestResultFileId(int testResultId) {
+					//List<TestResult> resultList = new ArrayList<TestResult>();
+
+					TestResult testResult = null;
+
+					try {
+
+						String sql = "select testResult from test_result_details where testResultId=?";
+						PreparedStatement pstmt = this.conn.prepareStatement(sql);
+
+						pstmt.setInt(1, testResultId);
+
+						ResultSet resultSet = pstmt.executeQuery();
+						
+						while (resultSet.next()) {
+							testResult = new TestResult();
+							
+						
+							testResult.setTestResult(resultSet.getBinaryStream("testResult"));// appoint id
+						
+						}
+//
+//						while (resultSet.next()) {
+//							Blob blob = resultSet.getBlob(0);
+//							BufferedInputStream is = new BufferedInputStream(blob.getBinaryStream());
+//							FileOutputStream fos = new FileOutputStream();
+//								   // you can set the size of the buffer
+//							byte[] buffer = new byte[2048];
+//							int r = 0;
+//							while((r = is.read(buffer))!=-1) {
+//								   fos.write(buffer, 0, r);
+//							}
+//							fos.flush();
+//								   fos.close();
+//								   is.close();
+//								   blob.free();
+//								}
+//								pstmt.close();
+
+						
+
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					return testResult;
+
+				}
 
 }

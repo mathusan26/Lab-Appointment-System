@@ -22,7 +22,7 @@
 
 <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
 
-<title>Home Page | Doctor Patient Portal</title>
+<title>Home Page</title>
 <%@include file="component/allcss.jsp"%>
 
 
@@ -37,6 +37,13 @@
 
 </head>
 <body>
+	<% 
+		response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+		
+		response.setHeader("Pragma","no-cache");
+
+		response.setHeader("Expires", "0");
+	%>
 	<%@include file="component/navbar.jsp"%>
 
 
